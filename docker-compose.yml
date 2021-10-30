@@ -1,0 +1,16 @@
+---
+version: "3"
+services:
+  jupyter:
+    image: jupyter/scipy-notebook
+    container_name: fn-jupyter-sci
+    hostname: fn-jupyter
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./data:/home/data
+      - ./notebooks:/home/jovyan/work
+    ports:
+      - 10000:8888
+    restart: unless-stopped
